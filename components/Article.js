@@ -4,7 +4,13 @@
 
 import data from '../data/ArticleData'
 
+console.log(data)
+
 const newsArticle = document.querySelector('.articles')
+
+console.log(newsArticle)
+let news = Array.from(data)
+console.log(news)
 
 function articleMaker(objectArticle) {
 const article = document.createElement('div')
@@ -13,14 +19,42 @@ const date = document.createElement('p')
 const articlePara = document.createElement('p')
 const button = document.createElement('button')
 const expandButton = document.createElement('span')
+
+article.classList.add('article')
+date.classList.add('date')
+articlePara.classList.add('para')
+expandButton.classList.add('expandButton')
+
+article.appendChild('articleTitle')
+article.appendChild('date')
+article.appendChild('articlePara')
+article.appendChild('expandButton')
+expandButton.appendChild('button')
+
+articleTitle.textContent = ['title']
+date.textContent = ['date']
+articlePara.textContent = ['Paragraph:nth-type-of(1)']
+button.textContent = '+'
+
+expandButton.addEventListener('click', () => {
+  article.classList.toggle('article-open')
+})
+
+return article
+
 }
+
+console.log(articleMaker('object stuff'))
+
+
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
   and returns a DOM node looking like the one below:
 
+function articleMaker(objectArticle) {
 
-
+}
 
   <div class="article">
     <h2>{title of the article}</h2>
