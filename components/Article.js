@@ -4,48 +4,44 @@
 
 import data from '../data/ArticleData'
 
-console.log(data)
+const articles = document.querySelector('.articles')
 
-const newsArticle = document.querySelector('.articles')
-
-console.log(newsArticle)
-let news = Array.from(data)
-console.log(news)
-
-function articleMaker(objectArticle) {
+function articleMaker(object) {
 const article = document.createElement('div')
 const articleTitle = document.createElement('h2')
 const date = document.createElement('p')
-const articlePara = document.createElement('p')
+const firstP = document.createElement('p')
+const secondP = document.createElement('p')
+const thirdP = document.createElement('p')
 const button = document.createElement('button')
 const expandButton = document.createElement('span')
 
 article.classList.add('article')
 date.classList.add('date')
-articlePara.classList.add('para')
+firstP.classList.add('para')
+secondP.classList.add('para')
+thirdP.classList.add('para')
 expandButton.classList.add('expandButton')
+article.append(articleTitle, date, firstP, secondP, thirdP, expandButton)
+expandButton.appendChild(button)
 
-article.appendChild('articleTitle')
-article.appendChild('date')
-article.appendChild('articlePara')
-article.appendChild('expandButton')
-expandButton.appendChild('button')
-
-articleTitle.textContent = ['title']
-date.textContent = ['date']
-articlePara.textContent = ['Paragraph:nth-type-of(1)']
+articleTitle.textContent = object.title
+date.textContent = object.date
+firstP.textContent = object.firstParagraph
+secondP.textContent = object.secondParagraph
+thirdP.textContent = object.thirdParagraph
 button.textContent = '+'
 
 expandButton.addEventListener('click', () => {
   article.classList.toggle('article-open')
 })
-
 return article
-
 }
 
-console.log(articleMaker('object stuff'))
-
+data.forEach(data => {
+  const article = articleMaker(data)
+  articles.appendChild(article)
+})
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
