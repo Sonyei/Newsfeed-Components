@@ -22,6 +22,7 @@ firstP.classList.add('para')
 secondP.classList.add('para')
 thirdP.classList.add('para')
 expandButton.classList.add('expandButton')
+
 article.append(articleTitle, date, firstP, secondP, thirdP, expandButton)
 expandButton.appendChild(button)
 
@@ -35,13 +36,15 @@ button.textContent = '+'
 expandButton.addEventListener('click', () => {
   article.classList.toggle('article-open')
 })
+
 return article
 }
 
-data.forEach(data => {
+data.map(data => {
   const article = articleMaker(data)
   articles.appendChild(article)
 })
+
 
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
